@@ -1,0 +1,29 @@
+// .topcate {
+//     &__wrapper {
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//     }
+//     &__item {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         width: calc(100% / 4 - 20px);
+//     }
+//     &__image {
+//         height: 200px;
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         gap: 10px;
+//         &-thum {
+//             &-two {
+//                 display: flex;
+//                 flex-direction: column;
+//                 align-items: center;
+//                 width: 100%;
+//                 gap: 10px;
+//             }
+//         }
+//     }
+// }

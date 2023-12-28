@@ -1,0 +1,92 @@
+.artist__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: -20px;
+}
+.artist__item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: #fff;
+    box-sizing: border-box;
+    width: calc(100% / 4 - 20px);
+    margin-left: 20px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 16px;
+    background: linear-gradient(
+        155.14deg,
+        rgba(0, 0, 0, 0) -2.13%,
+        rgba(255, 255, 255, 0.15) 136.58%
+    );
+    filter: drop-shadow(rgba(0, 7, 72, 0.12) 0px 4px 49px);
+    backdrop-filter: blur(7.5px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.25s linear;
+}
+.artist__item:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: translateY(-5px);
+}
+.artist__image-cover {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.artist__image-author {
+    object-fit: cover;
+    border-radius: 100rem;
+    width: 90px;
+    height: 90px;
+    margin-top: -50px;
+    border: 2px solid #fff;
+    margin-bottom: 15px;
+}
+.artist__name,
+.artist__eth {
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+.artist__eth {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.artist__name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 32px;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+}
+@media screen and (max-width: 820px) {
+    .artist__item {
+        width: calc(100% / 3 - 20px);
+    }
+}
+@media screen and (max-width: 640px) {
+    .artist__item {
+        width: calc(100% / 2 - 20px);
+    }
+}
+@media screen and (max-width: 480px) {
+    .artist__wrapper {
+        margin: 0;
+    }
+    .artist__item {
+        width: calc(270px - 20px);
+        margin-left: 0;
+    }
+}

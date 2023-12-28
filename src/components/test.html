@@ -1,24 +1,24 @@
 <html>
-  <head>
-    <!-- Moralis SDK code -->
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
-  </head>
-  <body>
-    <h1>Gas Stats With Moralis</h1>
+    <head>
+        <!-- Moralis SDK code -->
+        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+        <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    </head>
+    <body>
+        <h1>Gas Stats With Moralis</h1>
 
-    <button id="btn-login">Moralis Login</button>
-    <button id="btn-logout">Logout</button>
+        <button id="btn-login">Moralis Login</button>
+        <button id="btn-logout">Logout</button>
 
-    <script>
-      // connect to Moralis server
+        <script>
+            // connect to Moralis server
 
-      const serverUrl = "https://ptehajdtce48.usemoralis.com:2053/server";
-      const appId = "P8zE5L9cZq4IAiea5c845DdyIlfLm68YcbhGWe4U";
-      Moralis.start({ serverUrl, appId });
-      Moralis.authenticate().then(function (user) {
-          console.log(user.get('ethAddress'))
-      })
-    </script>
-  </body>
+            const serverUrl = "https://ptehajdtce48.usemoralis.com:2053/server";
+            const appId = "P8zE5L9cZq4IAiea5c845DdyIlfLm68YcbhGWe4U";
+            Moralis.start({ serverUrl, appId });
+            Moralis.authenticate().then(function(user) {
+                console.log(user.get("ethAddress"));
+            });
+        </script>
+    </body>
 </html>

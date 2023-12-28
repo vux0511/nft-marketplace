@@ -1,0 +1,225 @@
+.card__wrapper {
+    margin-top: 50px;
+}
+.card__item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 20px;
+    padding: 16px;
+    gap: 15px;
+    background: linear-gradient(
+        155.14deg,
+        rgba(0, 0, 0, 0) -2.13%,
+        rgba(255, 255, 255, 0.15) 136.58%
+    );
+    filter: drop-shadow(rgba(0, 7, 72, 0.12) 0px 4px 49px);
+    backdrop-filter: blur(7.5px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.5s ease;
+    height: 380px;
+    width: 270px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+}
+.card__image {
+    height: 210px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+}
+.card__author {
+    display: flex;
+    gap: 20px;
+}
+.card__author-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.card__author-title {
+    font-size: 18px;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    color: #fff;
+}
+.card__author-collector {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ccc;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+.card__bottom {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.card__bottom-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.card__bottom-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.card__left-eth {
+    font-size: 17px;
+    font-weight: 600;
+}
+.card__left-title {
+    font-size: 14px;
+    font-weight: 400;
+}
+.card__right-price {
+    font-size: 17px;
+    font-weight: 600;
+}
+.card__right-grown {
+    font-size: 14px;
+    font-weight: 400;
+    color: #24ff00;
+}
+.card__button {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 1 ease-in-out;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+.card__item:hover .card__image {
+    height: calc(210px - 76px);
+}
+.card__item:hover .card__button {
+    visibility: visible;
+    opacity: 1;
+}
+.swiper-btn {
+    background-color: #6654f1;
+    width: 50px;
+    height: 50px;
+    border-radius: 100rem;
+    background: #fff;
+}
+.swiper-btn::before,
+.swiper-btn::after {
+    font-size: 20px;
+}
+@media screen and (max-width: 480px) {
+    .card__item {
+        margin: 0;
+        margin-bottom: 30px;
+    }
+}
+
+.itemNft__wrapper {
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-start; */
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.itemNft {
+    width: calc(100% / 4 - 20px);
+    background: linear-gradient(
+        155.14deg,
+        rgba(0, 0, 0, 0) -2.13%,
+        rgba(255, 255, 255, 0.15) 136.58%
+    );
+    filter: drop-shadow(rgba(0, 7, 72, 0.12) 0px 4px 49px);
+    backdrop-filter: blur(7.5px);
+    border-radius: 6px;
+    /* margin-bottom: 10px; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+.itemNft:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 15px 0px;
+}
+.itemNft__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+}
+.itemNft__author-image {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 100rem;
+}
+.itemNft__author {
+    margin-bottom: 13px;
+}
+.itemNft__info {
+    padding: 5px 15px;
+}
+.itemNft__name {
+    font-size: 17px;
+    font-weight: 500;
+    padding-bottom: 13px;
+    padding-top: 3px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+.itemNft__author {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 15px;
+}
+.itemNft__author-name {
+    padding-left: 10px;
+}
+.itemNft__bottom {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.button-buy,
+.button-your-nft {
+    outline: none;
+    cursor: pointer;
+    padding: 8px 18px;
+    border: none;
+    font-weight: 500;
+    border-radius: 40px;
+    color: #fff;
+    background: linear-gradient(90deg, #7a6bec 0%, #6654f1 100%);
+    transition: all 0.3s ease;
+}
+.button-your-nft {
+    background: linear-gradient(90deg, #b2abe9 0%, #9187d9 100%);
+}
+.button-your-nft:hover {
+    transform: scale(0.9);
+}
+.button-buy:hover {
+    transform: scale(0.9);
+}

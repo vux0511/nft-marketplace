@@ -1,113 +1,164 @@
-import React, { Component } from 'react';
-import Web3 from 'web3'
-import './App.css';
-import Marketplace from '../abis/Marketplace.json'
-import Navbar from './Navbar'
-import Main from './Main'
-import AddProduct from './AddProduct'
-import { BrowserRouter as Router, Route,Routes} from 'react-router-dom'
+import React, { useState, useEffect, useCallback } from "react";
+import Web3 from "web3";
+import Marketplace from "../abis/Marketplace.json";
+import Header from "./Header";
+import Main from "./Main";
+import AddProduct from "./AddProduct";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Category from "./Category";
+import Profile from "./Profile";
 
+function App() {
+    const [account, setAccount] = useState("");
+    const [productCount, setProductCount] = useState(0);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [marketplace, setMarketplace] = useState(null);
 
-class App extends Component {
-
-  async componentWillMount() {
-    await this.loadWeb3()
-    await this.loadBlockchainData()
-  }
-
-  async loadWeb3() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum)
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-    }
-    else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider)
-    }
-    else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
-    }
-  }
-
-  async loadBlockchainData() {
-    const web3 = window.web3
-    // Load account
-    const accounts = await web3.eth.getAccounts()
-    this.setState({ account: accounts[0] })
-    const networkId = await web3.eth.net.getId()
-    const networkData = Marketplace.networks[networkId]
-    if(networkData) {
-      const marketplace = web3.eth.Contract(Marketplace.abi, networkData.address)
-      this.setState({ marketplace })
-      const productCount = await marketplace.methods.productCount().call()
-      this.setState({ productCount })
-      // Load products
-      for (var i = 1; i <= productCount; i++) {
-        const product = await marketplace.methods.products(i).call()
-        this.setState({
-          products: [...this.state.products, product]
-        })
-      }
-      this.setState({ loading: false})
-    } else {
-      window.alert('Marketplace contract not deployed to detected network.')
-    }
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      account: '',
-      productCount: 0,
-      products: [],
-      loading: true
-    }
-
-    this.createProduct = this.createProduct.bind(this)
-    this.purchaseProduct = this.purchaseProduct.bind(this)
-  }
-
-  createProduct(name, price) {
-    this.setState({ loading: true })
-    this.state.marketplace.methods.createProduct(name, price).send({ from: this.state.account })
-    .once('receipt', (receipt) => {
-      this.setState({ loading: false })
-    })
-  }
-
-  purchaseProduct(id, price) {
-    this.setState({ loading: true })
-    this.state.marketplace.methods.purchaseProduct(id).send({ from: this.state.account, value: price })
-    .once('receipt', (receipt) => {
-      this.setState({ loading: false })
-    })
-  }
-// this.state.loading
-                // ? <div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
-                // :
-  render() {
-    return (
-      <Router>
-        <Navbar account={this.state.account} />
-          <Routes>
-            <Route path='/' element={<Main
-              account={this.state.account} 
-              products={this.state.products}/>}  />
-            <Route path='/add' element={<AddProduct  
-              createProduct={this.createProduct}
-              purchaseProduct={this.purchaseProduct}/>} />
-            <Route path='/account' element={<AddProduct  
-              createProduct={this.createProduct}
-              purchaseProduct={this.purchaseProduct}/>} />
-          </Routes>
-      </Router>
+    const createProduct = useCallback(
+        async (name, price) => {
+            setLoading(true);
+            try {
+                await marketplace.methods
+                    .createProduct(name, price)
+                    .send({ from: account });
+            } catch (error) {
+                console.error("Error creating product:", error);
+            } finally {
+                setLoading(false);
+            }
+        },
+        [account, marketplace]
     );
-  }
 
+    const purchaseProduct = useCallback(
+        async (id, price) => {
+            setLoading(true);
+            try {
+                await marketplace.methods
+                    .purchaseProduct(id)
+                    .send({ from: account, value: price });
+            } catch (error) {
+                console.error("Error purchasing product:", error);
+            } finally {
+                setLoading(false);
+            }
+        },
+        [account, marketplace]
+    );
+
+    useEffect(() => {
+        const init = async () => {
+            await loadWeb3();
+            await loadBlockchainData();
+        };
+
+        init();
+    }, []);
+
+    const loadWeb3 = async () => {
+        if (window.ethereum) {
+            window.web3 = new Web3(window.ethereum);
+            await window.ethereum.request({ method: "eth_requestAccounts" });
+        } else if (window.web3) {
+            window.web3 = new Web3(window.web3.currentProvider);
+        } else {
+            window.alert(
+                "Trình duyệt không hỗ trợ Ethereum. Bạn nên cài đặt MetaMask!"
+            );
+        }
+    };
+
+    const loadBlockchainData = async () => {
+        const web3 = window.web3;
+
+        const accounts = await web3.eth.getAccounts();
+        setAccount(accounts[0]);
+
+        const networkId = await web3.eth.net.getId();
+        const networkData = Marketplace.networks[networkId];
+
+        if (networkData) {
+            const marketplace = new web3.eth.Contract(
+                Marketplace.abi,
+                networkData.address
+            );
+            setMarketplace(marketplace);
+
+            const productCount = await marketplace.methods
+                .productCount()
+                .call();
+            setProductCount(productCount);
+
+            const loadedProducts = [];
+            for (let i = 1; i <= productCount; i++) {
+                const product = await marketplace.methods.products(i).call();
+                loadedProducts.push(product);
+            }
+            setProducts(loadedProducts);
+
+            setLoading(false);
+        } else {
+            window.alert("Smart contract chưa được triển khai trên mạng này.");
+        }
+    };
+
+    return (
+        <Router>
+            <Header account={account} />
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Main
+                            account={account}
+                            products={products}
+                            purchaseProduct={purchaseProduct}
+                        />
+                    }
+                />
+                <Route
+                    path="/category"
+                    element={
+                        <Category
+                            account={account}
+                            products={products}
+                            purchaseProduct={purchaseProduct}
+                        />
+                    }
+                />
+                <Route
+                    path="/add"
+                    element={
+                        <AddProduct
+                            createProduct={createProduct}
+                            account={account}
+                            purchaseProduct={purchaseProduct}
+                        />
+                    }
+                />
+                <Route
+                    path="/profile"
+                    element={
+                        <Profile
+                            account={account}
+                            products={products}
+                            purchaseProduct={purchaseProduct}
+                        />
+                    }
+                />
+                <Route
+                    path="/account"
+                    element={
+                        <AddProduct
+                            createProduct={createProduct}
+                            purchaseProduct={purchaseProduct}
+                        />
+                    }
+                />
+            </Routes>
+        </Router>
+    );
 }
 
-
-
-       
-        
- 
 export default App;

@@ -1,0 +1,104 @@
+.cart__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom: 1px solid #d7dde3;
+    padding: 24px;
+}
+.cart__info {
+    padding: 15px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 500;
+}
+.cart__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px;
+    border-bottom: 1px solid #d7dde3;
+    flex: 1;
+}
+.cart__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 8px;
+}
+.cart__item:hover {
+    background: rgba(18, 18, 18, 0.04);
+    border-radius: 12px;
+}
+.cart__item:hover .cart__trash {
+    display: block;
+}
+.cart__item:hover .cart__price {
+    display: none;
+}
+.cart__trash {
+    display: none;
+    margin-left: 20px;
+    font-size: 18px;
+    transition: all 0.25s ease-in-out;
+}
+.cart__trash:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+.cart__image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.cart__name {
+    font-size: 15px;
+    line-height: 20px;
+    flex: 1;
+}
+.cart__name-product {
+    font-weight: 600;
+    font-size: 16px;
+}
+.cart__name-product,
+.cart__name-author {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+.cart__total {
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 16px;
+}
+.cart__total-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.cart__total-dolar {
+    font-weight: normal;
+}
+.cart__purchase {
+    margin: 0 auto;
+    padding-bottom: 24px;
+}
+.cart__clear {
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.25s ease-in-out;
+}
+.cart__clear:hover {
+    transform: all 0.2s linear;
+    color: #858584;
+}

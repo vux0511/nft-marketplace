@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    text-transform: capitalize;
+    background-color: #1a1d56;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+}
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.button {
+    font-family: "Poppins", sans-serif;
+    padding: 15px 55px;
+    display: block;
+    width: max-content;
+    font-weight: 600;
+    background-color: #a259ff;
+    transition: all 0.3s ease;
+    color: #fff;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+}
+.button:hover {
+    transform: scale(0.95);
+}
+.button-primary:hover {
+    color: #fff !important;
+}
+.button-purchase {
+    font-size: 18px;
+    font-weight: 500;
+}
+.button-transparent {
+    border: 2px solid #a259ff;
+    background-color: transparent;
+}
+.button-category {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 45px;
+    font-style: normal;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background-color: transparent;
+    border: 1px solid #fff;
+    opacity: 0.9;
+}
+.button-category-active {
+    background: #a259ff;
+    border: 1px solid #a259ff;
+}
+.button-more {
+    margin: 0 auto;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.text-title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+    background: linear-gradient(90deg, #69eacb 0%, #eaccf8 30%, #6654f1 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 100px 0 50px;
+}
+.text-title-left {
+    text-align: left;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 90;
+}
+@media screen and (max-width: 640px) {
+    .text-title {
+        font-size: 30px;
+        font-weight: 600;
+        margin: 0;
+        padding: 50px 0 30px;
+    }
+}
+@media screen and (max-width: 820px) {
+    .button {
+        padding: 15px 30px;
+    }
+}
+button {
+    outline: none !important;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}

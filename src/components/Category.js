@@ -1,19 +1,94 @@
-import React from "react";
-import Banner from "./Banner";
-import Wallet from "./Wallet";
-import TopCollection from "./TopCollection";
-import Footer from "./Footer";
-import Subcribe from "./Subcribe";
+import React, { useEffect, useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { LuSearch } from "react-icons/lu";
 
-const Main = ({ products, account, purchaseProduct }) => {
+function Category({ products, account, purchaseProduct }) {
+    const [listProduct, setListProduct] = useState([]);
+    const [contentSearch, setContentSearch] = useState("");
+
+    const handleSearch = (e) => {
+        let result = products.filter((product) => {
+            if (
+                product.name
+                    .toLowerCase()
+                    .indexOf(e.target.value.toLowerCase()) >= 0
+            ) {
+                return true;
+            } else return false;
+        });
+        setListProduct(result);
+        console.log(listProduct);
+    };
+
+    useEffect(() => {
+        setListProduct(products);
+    }, [products]);
+
     return (
         <>
-            <Banner />
-            <Wallet />
-            <TopCollection />
-
+            <div className="text-title products__heading">
+                Explore Collectibles
+            </div>
+            <form className="products__search">
+                <input
+                    type="text"
+                    className="products__input"
+                    placeholder="Type your keywords . . ."
+                    defaultValue={contentSearch}
+                    onChange={handleSearch}
+                />
+                <button className="products__button">
+                    <LuSearch className="products__button-search" />
+                </button>
+            </form>
+            {/* <div className="category__wrapper">
+                <div className="category__list">
+                    <div className="dropdown">
+                        <div className="dropdown__select">
+                            <span className="dropdown__selected">
+                                <p>Sort by</p>
+                                <p>
+                                    <IoIosArrowDown />
+                                </p>
+                            </span>
+                        </div>
+                        <ul className="dropdown__list">
+                            <li className="dropdown__item">
+                                <span className="dropdown__text">Under 5$</span>
+                            </li>
+                            <li className="dropdown__item">
+                                <span className="dropdown__text">
+                                    5$ to 10$
+                                </span>
+                            </li>
+                            <li className="dropdown__item">
+                                <span className="dropdown__text">
+                                    10$ to 20$
+                                </span>
+                            </li>
+                            <li className="dropdown__item">
+                                <span className="dropdown__text">
+                                    20$ to 50$
+                                </span>
+                            </li>
+                            <li className="dropdown__item">
+                                <span className="dropdown__text">Over 50$</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button className="category__item category__item-active">
+                        All
+                    </button>
+                    <button className="category__item">Music</button>
+                    <button className="category__item">Art</button>
+                    <button className="category__item">Sports</button>
+                    <button className="category__item">Virtual</button>
+                    <button className="category__item">Videos</button>
+                    <button className="category__item">More</button>
+                </div>
+            </div> */}
             <div className="container itemNft__wrapper">
-                {products.map((product, index) => (
+                {listProduct.map((product, index) => (
                     <>
                         {product.owner !== account ? (
                             <div className="itemNft" key={index}>
@@ -94,11 +169,8 @@ const Main = ({ products, account, purchaseProduct }) => {
                     </>
                 ))}
             </div>
-
-            <Subcribe />
-            <Footer />
         </>
     );
-};
+}
 
-export default Main;
+export default Category;

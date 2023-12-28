@@ -1,0 +1,24 @@
+.wallet {
+    margin-top: 50px;
+    padding: 50px 0;
+}
+.wallet__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px 50px;
+}
+.wallet__image {
+    width: 170px;
+    transition: all 0.3s ease;
+}
+.wallet__image:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+}
+@media screen and (max-width: 640px) {
+    .wallet__image {
+        width: 120px;
+    }
+}

@@ -1,0 +1,88 @@
+.create {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    margin-top: 50px;
+}
+.create__title {
+    font-size: 25px;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+
+.create__form {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.create__input-name {
+    width: 100%;
+}
+.create__input-price {
+    width: 100%;
+}
+.create__preview {
+    width: 30%;
+    background: linear-gradient(
+        155.14deg,
+        rgba(0, 0, 0, 0) -2.13%,
+        rgba(255, 255, 255, 0.15) 136.58%
+    );
+    filter: drop-shadow(rgba(0, 7, 72, 0.12) 0px 4px 49px);
+    backdrop-filter: blur(7.5px);
+    border-radius: 6px;
+    /* margin-bottom: 10px; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 0.25s ease-in-out;
+}
+.create__preview-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+}
+.create__preview-info {
+    padding: 10px 20px;
+}
+.create__input {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 35px;
+}
+
+textarea#create__input-desc {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 8px 16px;
+    margin-bottom: 35px;
+    border-radius: 8px;
+}
+.create__label {
+    padding-bottom: 5px;
+}
+.button-create {
+    display: block;
+    margin: 0 auto;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 20px;
+    border: none;
+    font-weight: 500;
+    border-radius: 40px;
+    color: #fff;
+    background: linear-gradient(90deg, #7a6bec 0%, #6654f1 100%);
+    transition: all 0.3s ease;
+}
+.button-create:hover {
+    transform: scale(0.93);
+}
+.create__preview-name {
+    font-size: 20px;
+}

@@ -1,0 +1,25 @@
+.top {
+    position: relative;
+}
+.top__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: -20px;
+}
+.top__item {
+    width: 270px;
+}
+.top__category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+@media screen and (max-width: 480px) {
+    .top__card {
+        margin-right: 0px;
+    }
+}
