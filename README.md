@@ -5,13 +5,13 @@ This is my specialized projects 3.
 ## Installation
 
 ```bash
-pip npm install
+npm install
 ```
 
 ```bash
-pip npm truffle migrate --reset
+npm truffle migrate --reset
 ```
 
 ```bash
-pip npm start
+npm start
 ```
